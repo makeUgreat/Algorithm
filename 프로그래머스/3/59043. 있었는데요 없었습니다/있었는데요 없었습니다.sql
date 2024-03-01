@@ -1,14 +1,12 @@
 select
     ins.animal_id,
     ins.name
-    
 from
-    animal_ins ins
+    animal_ins as ins
     inner join
-    animal_outs outs
+    animal_outs as outs
     on ins.animal_id = outs.animal_id
 where
-    outs.datetime < ins.datetime
+    ins.datetime >= outs.datetime
 order by
-    ins.datetime
-    
+    ins.datetime;
