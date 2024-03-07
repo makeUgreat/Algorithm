@@ -1,15 +1,15 @@
 select
-    users.user_id,
-    users.nickname,
-    sum(boards.price) as total_sales
+    b.user_id,
+    b.nickname,
+    sum(a.price) as total_sales
 from
-    used_goods_board as boards inner join used_goods_user as users
-    on boards.writer_id = users.user_id
+    used_goods_board a inner join used_goods_user b
+    on a.writer_id = b.user_id
 where
     status = 'DONE'
 group by
-    users.user_id
-having
-    total_sales >= 700000
+    b.user_id, b.nickname
+having 
+    sum(a.price) >= 700000
 order by
-    total_sales
+    sum(a.price)
