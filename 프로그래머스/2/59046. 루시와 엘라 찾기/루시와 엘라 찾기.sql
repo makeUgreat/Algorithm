@@ -6,6 +6,6 @@ SELECT
 from
     animal_ins
 where
-    name in ('Lucy', 'Ella', 'Pickle', 'Rogan','Sabrina','Mitty')
+    name in ('Lucy','Ella','Pickle','Rogan','Sabrina','Mitty')
 order by
     animal_id
