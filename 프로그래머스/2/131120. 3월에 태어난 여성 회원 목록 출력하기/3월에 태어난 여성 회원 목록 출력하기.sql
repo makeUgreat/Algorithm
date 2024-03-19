@@ -2,15 +2,14 @@ select
     member_id,
     member_name,
     gender,
-    to_char(date_of_birth,'yyyy-mm-dd') DATE_OF_BIRTH
+    date_format(date_of_birth,'%Y-%m-%d') as date_of_birth
 from
     member_profile
 where
-    to_char(date_of_birth,'mm') = '03'
-    and
-    TLNO is not null
+    date_format(date_of_birth,'%m') = '03'
     and
     gender = 'W'
+    and
+    tlno is not null
 order by
     member_id
-
