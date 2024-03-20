@@ -1,7 +1,7 @@
 select
-    trunc(price/10000) * 10000 as price_group,
-    count(*) as products
+    truncate(price,-4) as price_group,
+    count(*)
 from
     product
-group by trunc(price/10000) * 10000
-order by price_group
+group by price_group
+order by price_group;
