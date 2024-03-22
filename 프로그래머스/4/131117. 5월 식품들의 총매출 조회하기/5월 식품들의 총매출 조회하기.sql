@@ -1,17 +1,15 @@
 -- 코드를 입력하세요
--- 먼저 생산일자가 22년 5월인 식품들만 조회하는 서브쿼리 
--- 
-
-select
-    fo.product_id,
+SELECT
+    fp.product_id,
     fp.product_name,
     sum(fp.price * fo.amount) as total_sales
 from
-    food_product as fp inner join food_order as fo
+    food_product fp inner join food_order fo
     on fp.product_id = fo.product_id
 where
-    fo.produce_date like '2022-05%'
+    to_char(fo.produce_date,'yyyy-mm') = '2022-05'
 group by
-    product_id
+    fp.product_id,
+    fp.product_name
 order by
-    total_sales desc, fo.product_id
+    total_sales desc, fp.product_id;
