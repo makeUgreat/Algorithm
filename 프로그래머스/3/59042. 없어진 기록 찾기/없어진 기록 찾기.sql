@@ -1,5 +1,3 @@
-# animal_outs에는 있는데 animal_ins 는 없는 테이블 찾기
-
 select
     outs.animal_id,
     outs.name
@@ -9,5 +7,4 @@ from
 where
     ins.animal_id is null
 order by
-    ins.animal_id,
-    ins.name
+    outs.animal_id, outs.name
