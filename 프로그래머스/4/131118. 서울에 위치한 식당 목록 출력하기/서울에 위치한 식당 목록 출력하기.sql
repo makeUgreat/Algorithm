@@ -1,23 +1,22 @@
--- 코드를 입력하세요
-SELECT
+select
     i.rest_id,
     i.rest_name,
     i.food_type,
     i.favorites,
     i.address,
-    round(avg(r.review_score),2) as score
-
+    j.score
 from rest_info i
-    inner join rest_review r on i.rest_id = r.rest_id
+    inner join (
+        select
+            rest_id,
+            round(avg(review_score),2) as score
+        from
+            rest_review
+        group by
+            rest_id
+    ) j on i.rest_id = j.rest_id
 
 where
     i.address like '서울%'
-group by
-    i.rest_id,
-    i.rest_name,
-    i.food_type,
-    i.favorites,
-    i.address
 order by
-    round(avg(r.review_score),2) desc, favorites desc;
-    
+    score desc, favorites desc;
