@@ -1,7 +1,7 @@
--- 코드를 입력하세요
-SELECT
-    date_format(sales_date,'%Y') as year,
-    month(sales_date) as month ,
+-- 월별, 성별
+select
+    extract(year from sales_date) as year,
+    extract(month from sales_date) as month,
     ui.gender,
     count(distinct ui.user_id) as users
 from
@@ -10,8 +10,8 @@ from
 where
     ui.gender is not null
 group by
-    year,
-    month,
-    gender
+    extract(year from sales_date),
+    extract(month from sales_date),
+    ui.gender
 order by
-    year,month,gender
+    year, month, ui.gender
