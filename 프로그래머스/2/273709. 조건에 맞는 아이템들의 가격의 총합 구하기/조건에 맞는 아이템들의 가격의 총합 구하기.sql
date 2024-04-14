@@ -2,5 +2,7 @@ select
     SUM(PRICE) AS TOTAL_PRICE
 from
     item_info
-where
+group by
+    rarity
+having
     rarity = 'LEGEND'
