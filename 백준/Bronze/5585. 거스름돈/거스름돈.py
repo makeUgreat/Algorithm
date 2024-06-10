@@ -1,16 +1,11 @@
-paid = int(input())
-money = [500,100,50,10,5,1]
-changes = 1000-paid
+price = int(input())
+change = 1000 - price
+
+coins = [500,100,50,10,5,1]
 
 cnt = 0
-if changes == 0:
-    print(cnt)
-else:
-    for m in money:
-        if changes//m > 0:
-            cnt += changes//m
-            changes = changes%m
+for coin in coins:
+    cnt += change // coin
+    change = change % coin
 
-        if changes == 0:
-            print(cnt)
-            break
+print(cnt)
