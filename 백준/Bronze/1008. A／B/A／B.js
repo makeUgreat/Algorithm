@@ -1,12 +1,4 @@
-const readline = require('readline');
+const fs = require('fs');
+const input = fs.readFileSync('dev/stdin').toString().split(' ');
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-rl.question('',(input) => {
-    const [a,b] = input.split(" ").map(Number);
-    console.log(a/b);
-    rl.close();
-});
+console.log(parseFloat(input[0]) / parseFloat(input[1]));
